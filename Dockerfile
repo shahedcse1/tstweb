@@ -9,8 +9,6 @@ RUN apt-get update && apt-get install -y \
     unzip \
     git \
     libzip-dev \
-    nodejs \
-    npm \
     && docker-php-ext-install zip
 
 # Install Composer
@@ -23,9 +21,6 @@ COPY . .
 
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
-
-# Install Node dependencies and build CSS/JS
-RUN npm install && npm run build
 
 # Set permissions
 RUN chmod -R 775 storage bootstrap/cache
