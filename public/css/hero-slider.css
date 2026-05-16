@@ -1,0 +1,343 @@
+/* ============================================
+   HERO SLIDER  — hero-slider.css
+   Add these rules to your hero stylesheet.
+   ============================================ */
+
+/* ── Slider wrapper ─────────────────────────── */
+.hero-slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;          /* clips the track */
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    user-select: none;
+    touch-action: pan-y;       /* allow vertical scroll, hijack horizontal */
+}
+
+/* ── Track — the scrolling container ───────── */
+.hs-track {
+    display: flex;
+    transition: transform 0.48s cubic-bezier(0.35, 0, 0.15, 1);
+    will-change: transform;
+}
+
+/* ── Individual slide ────────────────────────── */
+.hs-slide {
+    min-width: 100%;           /* each slide = full slider width */
+    padding: 36px 32px 28px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.hs-slide-icon {
+    font-size: 42px;
+    line-height: 1;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.25));
+}
+
+.hs-slide-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: #4db8ff;
+    background: rgba(77, 184, 255, 0.12);
+    padding: 4px 10px;
+    border-radius: 20px;
+    width: fit-content;
+}
+
+.hs-slide-title {
+    font-size: clamp(19px, 2.4vw, 24px);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.25;
+    margin: 0;
+}
+
+.hs-slide-desc {
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.72);
+    margin: 0;
+}
+
+/* ── Feature list ────────────────────────────── */
+.hs-features {
+    list-style: none;
+    margin: 4px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.hs-features li {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 13.5px;
+    color: rgba(255, 255, 255, 0.80);
+}
+
+.hs-check {
+    color: #4db8ff;
+    font-size: 12px;
+    flex-shrink: 0;
+}
+
+/* ── CTA link ────────────────────────────────── */
+.hs-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #4db8ff;
+    text-decoration: none;
+    width: fit-content;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(77, 184, 255, 0.30);
+    transition: border-color 0.18s, color 0.18s;
+}
+
+.hs-cta:hover {
+    color: #80ccff;
+    border-color: rgba(128, 204, 255, 0.60);
+}
+
+/* ── Controls bar ────────────────────────────── */
+.hs-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 6px 4px 2px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Prev / Next buttons */
+.hs-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    background: rgba(255, 255, 255, 0.07);
+    color: rgba(32, 148, 32, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s, border-color 0.18s;
+    flex-shrink: 0;
+}
+
+.hs-btn:hover {
+    background: rgba(77, 184, 255, 0.18);
+    border-color: rgba(77, 184, 255, 0.50);
+    color: #fff;
+}
+
+.hs-btn:active { transform: scale(0.93); }
+
+/* Dots */
+.hs-dots {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.hs-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(21, 101, 7, 0.28);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background 0.22s, width 0.22s, border-radius 0.22s;
+}
+
+.hs-dot.active {
+    width: 24px;
+    border-radius: 4px;
+    background: #13922e;
+}
+
+/* ── Progress bar ────────────────────────────── */
+.hs-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: #0e8520;
+    border-radius: 0 2px 0 0;
+    transition: width 0.12s linear;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1024px) {
+    .hs-slide { padding: 28px 24px 22px; }
+    .hs-slide-title { font-size: 20px; }
+}
+
+@media (max-width: 768px) {
+    /* On mobile the hero stacks vertically — slider goes full width */
+    .hero-right { width: 100%; }
+
+    .hs-slide { padding: 24px 20px 20px; gap: 12px; }
+    .hs-slide-icon { font-size: 36px; }
+    .hs-slide-title { font-size: 18px; }
+    .hs-slide-desc  { font-size: 13.5px; }
+    .hs-features li { font-size: 13px; }
+}
+
+@media (max-width: 480px) {
+    .hs-slide { padding: 20px 16px 16px; }
+    .hs-btn   { width: 30px; height: 30px; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .hs-track { transition: none; }
+    .hs-progress { transition: none; }
+}
+
+/* ── Fix: ensure hero-right & slider are visible on mobile ── */
+@media (max-width: 768px) {
+    .hero-inner {
+        flex-direction: column;   /* stack left then right */
+        align-items: stretch;
+    }
+
+    .hero-right {
+        display: block !important; /* override any display:none */
+        width: 100% !important;
+        max-width: 100%;
+        margin-top: 2rem;
+    }
+
+    .hero-slider {
+        display: block !important;
+        width: 100%;
+    }
+}
+
+
+
+/* ============================================
+   SLIDE IMAGE BLOCK
+   Append these rules to your hero-slider.css
+   ============================================ */
+
+/* Remove old top padding — image takes that space now */
+.hs-slide {
+    padding: 0;
+    gap: 0;
+}
+
+/* ── Image wrapper ───────────────────────────── */
+.hs-slide-img-wrap {
+    position: relative;
+    width: 100%;
+    height: 280px;          /* fixed image height */
+    overflow: hidden;
+    border-radius: 18px 18px 0 0;
+    background: #0d2340;    /* placeholder bg while image loads */
+    flex-shrink: 0;
+}
+
+/* Fallback bg when image fails (onerror adds .hs-img-fallback) */
+.hs-slide-img-wrap.hs-img-fallback {
+    background: linear-gradient(135deg, #0f2d52 0%, #1a4a7a 100%);
+}
+
+/* Actual image */
+.hs-slide-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.55s ease;
+}
+
+/* Subtle zoom on the active slide */
+.hs-slide.is-active .hs-slide-img {
+    transform: scale(1.04);
+}
+
+/* Dark gradient overlay so text above image stays legible */
+.hs-slide-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(10, 25, 47, 0.15) 0%,
+        rgba(10, 25, 47, 0.55) 100%
+    );
+    pointer-events: none;
+}
+
+/* Emoji icon — now sits over the image (bottom-left) */
+.hs-slide-icon-over {
+    position: absolute;
+    bottom: 38px;
+    left: 20px;
+    font-size: 34px;
+    line-height: 1;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.45));
+}
+
+/* Tag badge — now sits over the image (bottom-left, below icon) */
+.hs-slide-img-wrap .hs-slide-tag {
+    position: absolute;
+    bottom: 14px;
+    left: 20px;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: #4db8ff;
+    background: rgba(10, 25, 47, 0.68);
+    border: 1px solid rgba(77, 184, 255, 0.30);
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+
+/* ── Slide body (text section below image) ───── */
+.hs-slide-body {
+    padding: 22px 26px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* ── Responsive ─────────────────────────────── */
+@media (max-width: 1024px) {
+    .hs-slide-img-wrap { height: 170px; }
+    .hs-slide-body     { padding: 18px 20px 20px; }
+}
+
+@media (max-width: 768px) {
+    .hs-slide-img-wrap { height: 180px; border-radius: 14px 14px 0 0; }
+    .hs-slide-body     { padding: 16px 18px 18px; gap: 10px; }
+    .hs-slide-title    { font-size: 17px; }
+    .hs-slide-desc     { font-size: 13px; }
+}
+
+@media (max-width: 480px) {
+    .hs-slide-img-wrap { height: 160px; }
+    .hs-slide-body     { padding: 14px 14px 16px; }
+}
