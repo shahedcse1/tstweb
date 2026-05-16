@@ -28,6 +28,5 @@ RUN chmod -R 775 storage bootstrap/cache
 # Expose port
 EXPOSE 8000
 
-# Start Laravel
-RUN php artisan config:cache
-CMD php artisan serve --host=0.0.0.0 --port=8000
+# Start Laravel (config:clear runs at runtime so ENV vars are available)
+CMD php artisan config:clear && php artisan serve --host=0.0.0.0 --port=8000
