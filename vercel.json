@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "framework": null,
+  "buildCommand": "composer install --no-dev && php artisan config:clear",
+  "outputDirectory": "public",
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.php"
+    }
+  ]
+}
