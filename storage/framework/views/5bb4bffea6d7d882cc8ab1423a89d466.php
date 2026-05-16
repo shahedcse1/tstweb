@@ -48,7 +48,7 @@
     <div class="hs-slide" role="group" aria-label="Slide 1 of 4">
         <div class="hs-slide-img-wrap">
             <img
-                src="<?php echo e(asset('images/slider/sugar-oils.jpg')); ?>"
+                src="<?php echo e(asset('images/slider/slide2.png')); ?>"
                 alt="Premium Sugar and Edible Oils"
                 class="hs-slide-img"
                 onerror="this.parentElement.classList.add('hs-img-fallback')"
@@ -60,7 +60,7 @@
     <div class="hs-slide" role="group" aria-label="Slide 1 of 4">
         <div class="hs-slide-img-wrap">
             <img
-                src="<?php echo e(asset('images/slider/sugar-oils.jpg')); ?>"
+                src="<?php echo e(asset('images/slider/slide3.png')); ?>"
                 alt="Premium Sugar and Edible Oils"
                 class="hs-slide-img"
                 onerror="this.parentElement.classList.add('hs-img-fallback')"
@@ -72,7 +72,7 @@
     <div class="hs-slide" role="group" aria-label="Slide 1 of 4">
         <div class="hs-slide-img-wrap">
             <img
-                src="<?php echo e(asset('images/slider/sugar-oils.jpg')); ?>"
+                src="<?php echo e(asset('images/slider/slide4.png')); ?>"
                 alt="Premium Sugar and Edible Oils"
                 class="hs-slide-img"
                 onerror="this.parentElement.classList.add('hs-img-fallback')"
